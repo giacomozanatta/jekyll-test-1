@@ -4,7 +4,8 @@ title: Main Page
 To do
 
 Code snippet example
-```java
+
+{% highlight java %}
 public class Main {
 
     public static void main(String[] args) {
@@ -13,7 +14,10 @@ public class Main {
         int z = x + y;
         System.out.println("Hello World");
     }
-```
+}
+{% endhighlight %}
+
+
 <h2>Content</h2>
 <ul>
     {% assign grouped = site.docs | group_by: 'category' | sort: 'name' %}
