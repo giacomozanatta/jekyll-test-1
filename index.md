@@ -12,6 +12,7 @@ public class Main {
         int x = 10;
         int y = 50;
         int z = x + y;
+        int a = 3;
         System.out.println("Hello World");
     }
 }
