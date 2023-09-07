@@ -1,20 +1,35 @@
 ---
-title: Introduction
+title: Introduction: Docker, Containers and Images
 category: 1. Docker
 order: 1
 ---
-Esempio iframe youtube: 
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/fqMOX6JJhGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
-**Docker** is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications.
 
-> By taking advantage of Docker’s methodologies for shipping, testing, and deploying code, you can significantly reduce the delay between writing code and running it in production.
+# Intruduction to Docker
+## Install Docker Desktop
+Download *Docker Desktop* from [here](https://www.docker.com/products/docker-desktop/). Then, run the installer and follows the onscreen instruction. This will install the Docker Engine, that is the core of the Docker platform, and a easy-to-use Graphical User Interface (GUI), i.e. Docker Desktop.
 
-# The Docker Plaform
-Docker provides the ability to package and run an application in a loosely isolated environment called a container. The isolation and security lets you to run many containers simultaneously on a given host. Containers are lightweight and contain everything needed to run the application, so you don’t need to rely on what’s installed on the host. You can share containers while you work, and be sure that everyone you share with gets the same container that works in the same way.
+## The Docker Engine
+The Docker Engine is shipped out with a Command-Line Iterface (CLI), and a server. The latter component runs as a root-privilege background process (daemon). You can interact with the server using the CLI client or Docker Desktop. The daemon creates and manage Docker objects, such as images and containers. 
+Launching Docker Desktop will automatically start the underlying daemon process.
 
-Docker provides tooling and a platform to manage the lifecycle of your containers:
+## How it Works
+Docker is a tool that permits to run an application in an isolated environment called **container**, enabling the capability to separate applications from infrastructures. 
+A container and can be seen as a sandboxed process running on a machine.
+A container is created from an **image**.
 
-- Develop your application and its supporting components using containers.
-- The container becomes the unit for distributing and testing your application.
-- When you’re ready, deploy your application into your production environment, as a container or an orchestrated service. This works the same whether your production environment is a local data center, a cloud provider, or a hybrid of the two.
+# Containers
 
+As you may have learned from the video, Docker is a tool that permits to run an application in an isolated environment, enabling the capability to separate applications from infrastructures. This environment is named **container** and can be seen as a sandboxed process running on a machine. In a single machine you can have multiple containers, each of one containing one or more applications. From docker documentation, "a container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliability from one computing environment to another". 
+Docker containers are:
+1. Industry standard: they could be portable anywhere.
+2. Lightweight: containers does not require to run a full OS per application, since all the containers share the machine's OS system kernel.
+3. Secure: containers are isolated from the overall system, and this permits to run applications in containers safety.  
+![Docker container](/images/docker_container.webp)
+Docker automates the deployment of applications into containers, providing a set of tools and mechanism that permits to manage them.
+
+# Images
+A container is a runnable instance of an **image**. Images are the build part of Docker's lifer cycle, and they are made up of filesystems layered over each other using a union mount. Every layer of an image is mounted in read-only and is itself an image: the image below is called the parent image, where the final is called base image.
+When we create a container from an image, Docker will add a read-write filesystem on top of all the image layers. In this layer runs the application that we want to "Dockerize". When Docker first start a container, this read-write layer is empty. Changes are applied only to this layer: for example, if the running application need to change a file of parent image, this file is copied into the container layer (i.e., the read-write layer), shadowing the read-only file. To better undertand this concept, just observe the image below:
+![Docker image layers](/images/docker_image_layers.webp)
+
+[^1]: A daemon is a background process.
