@@ -1,5 +1,5 @@
 ---
-title: 2. Quick Start 
+title: 2. Getting Started
 category: 1. Docker
 order: 2
 ---
