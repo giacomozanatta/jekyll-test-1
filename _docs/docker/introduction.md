@@ -3,7 +3,9 @@ title: 1. Introduction
 category: 1. Docker
 order: 1
 ---
-
+### Contents
+* toc
+{:toc}
 ## Install Docker Desktop
 Download **Docker Desktop** from [here](https://www.docker.com/products/docker-desktop/). Then, run the installer and follows the onscreen instruction. This will install the Docker Engine, that is the core of the Docker platform, and a easy-to-use Graphical User Interface (GUI), i.e. Docker Desktop.
 ![Docker Desktop]({{ site.baseurl }}/images/docker_desktop.png)

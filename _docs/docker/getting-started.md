@@ -3,6 +3,9 @@ title: 2. Getting Started
 category: 1. Docker
 order: 2
 ---
+### Contents
+* toc
+{:toc}
 In this section, we will see step-by-step how we can create images and initialize containers. To follow properly, you should have <a href="../introduction">Docker Desktop</a> (or at least the Docker Engine if you want to do it from the CLI) installed properly on your machine.
 
 ## The Docker Hub
@@ -10,20 +13,9 @@ We want now to play around with Docker in order to understand better how it work
 
 The <a href="https://hub.docker.com/">Docker Hub</a> is a container image registry. From Docker Hub you can fetch ready-to-use images from which you can base your application. Do you want to deploy in a container an application written in Python? You can download a <a href="https://hub.docker.com/_/python">Docker image</a> that has python already installed and configured.
 
-## [DRAFT] Image tags
-A docker image has a tag. This permits to specify which version of the Docker image you want to use. For example, suppose that your python application relies on a libraries that were developed with python 3.9. Probably you don't want to use the latest version of python, since the library could not working properly on python >= 3.9. So, you should use a python 3.9 Docker image. You can see the available tags of an image directly from the Docker Hub: 
+## Image tags
+A docker image has a tag. This permits to specify which version of the Docker image you want to use. For example, suppose that your python application relies on a libraries that were developed with python 3.9. Probably you don't want to use the latest version of python, since the library could not working properly on python >= 3.9. So, you should use a python 3.9 Docker image. You can see the available tags of an image directly from the iamge page of the Docker Hub:
 ![Docker container]({{ site.baseurl }}/images/docker_hub_tags.png)
-As you can notice, you have multiple tags for a single python version. Consider, for example, python version 3.11. We have these tags:
-- 3.11.5-bookworm, 3.11-bookworm, 3-bookworm, bookworm
-- 3.11.5-slim-bookworm, 3.11-slim-bookworm, 3-slim-bookworm, slim-bookworm, 3.11.5-slim, 3.11-slim, 3-slim, slim
-- 3.11.5-bullseye, 3.11-bullseye, 3-bullseye, bullseye
-- 3.11.5-slim-bullseye, 3.11-slim-bullseye, 3-slim-bullseye, slim-bullseye
-- 3.11.5-alpine3.18, 3.11-alpine3.18, 3-alpine3.18, alpine3.18, 3.11.5-alpine, 3.11-alpine, 3-alpine, alpine
-- 3.11.5-alpine3.17, 3.11-alpine3.17, 3-alpine3.17, alpine3.17
-- 3.11.5-windowsservercore-ltsc2022, 3.11-windowsservercore-ltsc2022, 3-windowsservercore-ltsc2022, windowsservercore-ltsc2022
-- 3.11.5-windowsservercore-1809, 3.11-windowsservercore-1809, 3-windowsservercore-1809, windowsservercore-1809
-
-Tags on the same bullet point represents the same image. 
 
 
 ## Getting Started

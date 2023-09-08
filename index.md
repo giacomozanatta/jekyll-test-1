@@ -1,25 +1,8 @@
 ---
-title: Main Page
+title: Home
 ---
-To do
 
-Code snippet example
-
-{% highlight java %}
-public class Main {
-
-    public static void main(String[] args) {
-        int x = 10;
-        int y = 50;
-        int z = x + y;
-        int a = 3;
-        System.out.println("Hello World");
-    }
-}
-{% endhighlight %}
-
-
-<h2>Content</h2>
+<h2>Contents</h2>
 <ul>
     {% assign grouped = site.docs | group_by: 'category' | sort: 'name' %}
     {% for group in grouped %}
