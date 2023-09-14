@@ -3,7 +3,7 @@ title: 2. Getting Started
 category: 1. Docker
 order: 2
 ---
-### Contents
+<h2>Contents</h2>
 * toc
 {:toc}
 In this section, we will see step-by-step how we can create images and initialize containers. To follow properly, you should have <a href="../introduction">Docker Desktop</a> (or at least the Docker Engine if you want to do it from the CLI) installed properly on your machine.

@@ -182,7 +182,7 @@ You can also create and start a container in a single step, by using docker run:
 ### Build an image
 We can use the docker build command to build an image. We will explain this command in the next section.
 ### Other commands
-An exhaustive list of all the Docker CLI commands can be found here.
+An exhaustive list of all the Docker CLI commands can be found <a href="https://docs.docker.com/engine/reference/commandline/cli/">here</a>..
 ## The Dockerfile
 But how we can create an image from scratch? In Docker exists a special file, called Dockerfile, that permits the definition of an image in a script way. Let's see how it works.
 The first step involves creating a new text file named Dockerfile, without extension. In this file, we are going to describe all the step-by-step commands that the Docker Engine needs to run to assemble a Docker image.  
@@ -205,10 +205,9 @@ What do these commands mean? Let's see one by one.
 ### RUN and CMD: what's the difference?
 RUN and CMD commands seem very similar. The main difference is that RUN is an image-build step. That is to say, all commands launched with RUN will be persistent in the image. We could have multiple RUN commands in a Dockerfile, and these commands are layered on top of one another to build the final image.  
 CMD, instead, is the command launched by default when we start the container. The Dockerfile will just use the last CMD defined.  
-In other words: CMD commands will be executed once during the creation of the image. The RUN command will be executed every time we start a container.  
-Note that the RUN command can be skipped if we ...
+In other words: CMD commands will be executed once during the creation of the image. The RUN command will be executed every time we start a container.
 ### Build the image
-To build the image we use the docker build command. Go into the folder in which the Dockerfile lives and launch the next command:
+To build the image we use the docker build command. Go into the folder in which the Dockerfile lives and launch the next command:  
 {% highlight bash %}
 docker build -t simple-node-app .
 {% endhighlight %}
@@ -216,31 +215,30 @@ This command creates a new image executing the commands specified in the Dockerf
 The -t flag permits to tag and name the image.  
 The last point (.) at the end of the command tells Docker to fetch the Dockerfile from the current directory.  
 Now, if you open Docker Desktop, you should see the newly created image:
-<<image>>
+![Docker images]({{ site.baseurl }}/images/docker_cli_3.png)
 Create and run a container for our image:
 {% highlight bash %}
 docker run -d -p 3200:3000 simple-node-app
 {% endhighlight %}
-With the flag -d we are going to tell Docker to run the container in detached mode, while with -p we can specify the port mapping: in our case, we are mapping the 3200 port of our host to port 3000 of the container. 
-<<image>>
+With the flag -d we are going to tell Docker to run the container in detached mode, while with -p we can specify the port mapping: in our case, we are mapping the 3200 port of our host to port 3000 of the container.
 The application is then avaiable at <a href="localhost:3200">localhost:3200</a>:
-
+![Docker images]({{ site.baseurl }}/images/docker_cli_4.png)
 ### Other Dockerfile commands
 Here we see briefly two other important Dockerfile commands: a complete list can be found <a href="https://docs.docker.com/engine/reference/builder/">here</a>.
-1. EXPOSE: informs Docker that the container listens on specified network ports at runtime, and permits to specify also if the port listens on TCP or UDP protocol (default TCP if the protocol is omitted). For example:  
+1. **EXPOSE**: informs Docker that the container listens on specified network ports at runtime, and permits to specify also if the port listens on TCP or UDP protocol (default TCP if the protocol is omitted). For example:  
 {% highlight bash %}
 EXPOSE 80/udp
 EXPOSE 80/tcp
 EXPOSE 40
 {% endhighlight %}
 This tells that the container listens on port 80 both in UDP and TCP, and on port 40 in TCP.
-2. ENV: sets an environment variable in the container. For example, try to create this Docker image:
+2. **ENV**: sets an environment variable in the container. For example, try to create this Docker image:
 {% highlight bash %}
 FROM ubuntu
 ENV TEST_ENV_VAR="HELLO WORLD"
 CMD ["sleep", "3600"]
 {% endhighlight %}
 And run a container from it. Then, open the container's terminal and print out the content of the environment variable TEST_ENV_VAR:
-<<image>>
+![Docker images]({{ site.baseurl }}/images/docker_cli_5.png)
 ## Exercises
-1. Create a Dockerfile that prints “installing!” when it is installed and prints “running!” each time it is launched.
+1. Create a **Dockerfile** that prints "installing!" when it is installed and prints "running!" each time it is launched.

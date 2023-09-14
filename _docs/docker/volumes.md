@@ -3,7 +3,7 @@ title: 4. Volumes
 category: 1. Docker
 order: 4
 ---
-<h1>Contents</h1>
+<h2>Contents</h2>
 * toc
 {:toc}
 ## A Glimpse of our Node Application
@@ -11,18 +11,19 @@ In the previous section, we saw how to create a Dockerfile and we deployed our f
 If you go to the web app, you should see something like this:
 
 This demo application is a simple to-do list. Let's try to add something:
-As you can notice, the inserted data seems persistent (spoiler: it is not): try to refresh the page, or to restart the container. The items that we inserted remain. Let's see how it's done by looking at the source code of the application. Even if we don't know how nodeJS works (it is not part of the course), we can see that underlying the application there is a database (src/persistence folder), and looking at the src/persistence/index.js file we know that, since we didn't have set an environment variable MYSQL_HOST we are using SQLite. SQLite stores data in /etc/todos/todo.db (line 3 of sqlite.js):
-<image>
+![Docker images]({{ site.baseurl }}/images/docker_volumes_1.png)
+As you can notice, the inserted data seems persistent (spoiler: they are not): try to refresh the page, or to restart the container. The items that we inserted remain. Let's see how it's done by looking at the source code of the application. Even if we don't know how nodeJS works (it is not part of the course), we can see that underlying the application there is a database (src/persistence folder), and looking at the src/persistence/index.js file we know that, since we didn't have set an environment variable MYSQL_HOST we are using SQLite. SQLite stores data in /etc/todos/todo.db (line 3 of sqlite.js):
+![Docker images]({{ site.baseurl }}/images/docker_volumes_2.png)
 We can prove it just by inspecting the todo.db file:
-<image>
+![Docker images]({{ site.baseurl }}/images/docker_volumes_3.png)
 
 ### Updating the App
 
 Now, suppose that you need to update the application (follow the "Updating our app" section of the getting-started application, note that we changed the name of the image in simple-node-app):
-<image>
+![Docker images]({{ site.baseurl }}/images/docker_volumes_4.png)
 This requires to rebuild the image and to create a new container. As you can imagine, our data is gone (Why?).
 
-### Where is my data?
+### Where are my data?
 Our data is gone because it lives inside a container, and updating an app requires building a new container. This is not optimal: suppose that our app is widely used around the world and therefore
 we have multiple servers (and multiple containers) that host the application for load-balancing purposes. We want the data to persist among containers and among different updates. What we can do?
 ## Docker Volumes
@@ -31,14 +32,14 @@ A volume is a way of mounting directories/files from our host machine to the doc
 {% highlight bash %}
 docker volume create <name>
 {% endhighlight %}
-Where &gl;name&gt; is the name of the volume. So let's create a volume for our application:
+Where *&lt;name&gt;* is the name of the volume. So let's create a volume for our application:
 {% highlight bash %}
 ~/Projects/sw-arch/docker/getting-started docker volume create todolist-db      
 todolist-db
 ~/Projects/sw-arch/docker/getting-started 
 {% endhighlight %}
 You should see the volume inside Docker Desktop:
-<<image>>
+![Docker images]({{ site.baseurl }}/images/docker_volumes_5.png)
 Now we want to our app use this volume. In order to do so, destroy the container and create it by launching the next command:
 {% highlight bash %}
 ~/Projects/sw-arch/docker/getting-started docker run -d -p 3200:3000 -v todolist-db:/etc/todos simple-node-app
