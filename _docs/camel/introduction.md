@@ -1,8 +1,11 @@
 ---
-title: Introduction
-category: 2. Camel
-order: 3
+title: 1. Introduction
+category: 4. Apache Camel
+order: 1
 ---
+
+
+## What is Apache Camel
 
 [Apache Camel](https://camel.apache.org/) is an Open Source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.
 
