@@ -1,7 +1,7 @@
 ---
-title: 4. Testing Java Applications
+title: 3. Testing Java Applications
 category: 2. Gradle
-order: 2
+order: 3
 ---
 <h2>Contents</h2>
 * toc

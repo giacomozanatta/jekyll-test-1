@@ -1,7 +1,7 @@
 ---
-title: 3. Example - log4j
+title: 4. Example - log4j
 category: 2. Gradle
-order: 3
+order: 4
 ---
 <h2>Contents</h2>
 * toc
