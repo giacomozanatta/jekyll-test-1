@@ -1,5 +1,5 @@
 ---
-title: 4. Testing Java Application
+title: 4. Testing Java Applications
 category: 2. Gradle
 order: 2
 ---
