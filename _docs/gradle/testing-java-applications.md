@@ -108,14 +108,15 @@ public class UnitTests {
 }
 {% endhighlight %}
 Before going further, let's spend some words on the method testAdd. The @Test <a href="https://en.wikipedia.org/wiki/Java_annotation">annotation</a> tells that the method is a test method. The body of the method is self-explanatory: simply, it checks that the value returned by the method add is correct, if not, it raises an exception. This simulates what we did "by hand" just some minutes ago. If the test raises an error, it means that there is something wrong with the method.
-You can run tests with gradlew from the terminal
+You can run tests with gradlew from the terminal.
 {% highlight bash %}
 ./gradlew test --tests # launch all the defined test methods
 ./gradlew test --tests 'UnitTests.testAdd' # launch test method testAdd of class UnitTests
 {% endhighlight %}
 If you are using IntelliJ, probably you have noticed that a play button appears on the right of the method signature:
-
-If you click on it, you can run the test, or among the other things you can run the test with coverage. Choose run with coverage. Now, on the right, a window will appear telling you the coverage (i.e. the percentage of your code that your test reaches: for our case, we cover all the classes, 50% of methods (1 method of 2), and the 20% of code lines). of your test. Open the Main class and notice the green shape on the left of the function "add". This means that the "testAdd" function executes the function completely. Of course, we didn't call the "main" method from the test, so the main has no coverage (highlighted in red).  
+![Gradle testing]({{ site.baseurl }}/images/gradle_testing_1.png)
+If you click on it, you can run the test, or among the other things you can run the test with coverage. Choose run with coverage. Now, on the right, a window will appear telling you the coverage (i.e. the percentage of your code that your test reaches: for our case, we cover all the classes, 50% of methods (1 method of 2), and the 20% of code lines). of your test. Open the Main class and notice the green shape on the left of the function "add". This means that the "testAdd" function executes the function completely. Of course, we didn't call the "main" method from the test, so the main has no coverage (highlighted in red).
+![Gradle testing]({{ site.baseurl }}/images/gradle_testing_2.png)
 ## The importance of writing tests that make sense
 Our test passed successfully and covered all the lines of our add function. But are we really, really, really sure that the function is bug-free? Spoiler: no. To tell you why, we need a more complex example. Suppose that we have this function, that checks if two String has the same amount of 0s:
 {% highlight java %}
